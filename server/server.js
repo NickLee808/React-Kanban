@@ -9,9 +9,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/api/cards/', cardRoute);
 
-/*app.use('/', (req, res) => {
-  res.send('aloha ao');
-});*/
+app.use('/', (req, res) => {
+  res.redirect('/api/cards/');
+});
 
 app.listen(PORT, _ => console.log('Server listening on PORT', PORT));
 

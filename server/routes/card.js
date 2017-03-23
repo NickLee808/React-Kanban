@@ -35,11 +35,16 @@ router.route('/404', (req, res) => {
 
 router.route('/:id')
   .delete((req, res) => {
-    Card.destroy(
-    {
+    Card.findOne({
       where: {
         id: req.params.id
       }
+    })
+    .then((card) => {
+      card.destroy();
+      Card.findAll().then((card) => {
+        res.render(`index`, {cards});
+      });
     });
   })
   .put((req, res) => {
