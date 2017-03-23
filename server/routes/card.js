@@ -5,6 +5,7 @@ const { Card } = db;
 
 router.route('/')
   .get((req, res) => {
+    console.log('asdfdfasf');
     Card.findAll()
       .then(cards => {
         res.send(cards);
@@ -34,6 +35,18 @@ router.route('/404', (req, res) => {
 });
 
 router.route('/:id')
+  .get((req, res) => {
+    Card.findOne({
+      where: {
+        id: req.params.id
+      }
+    })
+    .then(card => {
+      return card.get({
+        plain: true
+      });
+    });
+  })
   .delete((req, res) => {
     Card.findOne({
       where: {
@@ -41,9 +54,10 @@ router.route('/:id')
       }
     })
     .then((card) => {
+    console.log(req.params.id);
       card.destroy();
       Card.findAll().then((card) => {
-        res.render(`index`, {cards});
+        res.redirect('/');
       });
     });
   })
