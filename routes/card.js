@@ -3,12 +3,11 @@ const router = express.Router();
 const db = require('../models');
 const { Card } = db;
 
-
 router.route('/')
 .get((req, res) => {
   Card.findAll()
   .then(cards => {
-    res.json({cardList:{cards}});
+    res.send(cards);
   });
 })
 .post((req, res) => {
@@ -17,9 +16,15 @@ router.route('/')
     priority: req.body.priority,
     status: req.body.status
   })
-  .then((task) => {
+  .then((card) => {
+    console.log('POSTED');
     res.send('POSTED');
   });
+});
+
+router.route('/404', (req, res) => {
+  res.status(404);
+  res.render('404');
 });
 
 router.route('/:id')

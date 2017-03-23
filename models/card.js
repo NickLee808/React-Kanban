@@ -9,9 +9,7 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-
-        //define associations here
-        
+        // associations can be defined here
       }
     }
   });
