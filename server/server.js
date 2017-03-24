@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const pg = require('pg');
+const methodOverride = require('method-override');
 const PORT = process.env.PORT || 9000;
 const cardRoute = require('./routes/card');
 
