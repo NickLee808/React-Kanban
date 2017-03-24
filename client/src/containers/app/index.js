@@ -4,6 +4,15 @@ import KanbanTitle from '../../components/KanbanTitle.js';
 import KanbanDummyList from '../../components/KanbanDummyList.js';
 import './styles.css';
 
+function reqListener () {
+  console.log(this.responseText);
+}
+
+var oReq = new XMLHttpRequest();
+oReq.addEventListener('load', reqListener);
+oReq.open('GET', 'http://localhost:9000/api/cards');
+oReq.send();
+
 var dummyCards = [
   {
   "id": 1,
