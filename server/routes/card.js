@@ -57,7 +57,7 @@ router.route('/:id')
     console.log(req.params.id);
       card.destroy();
       Card.findAll().then((card) => {
-        res.redirect('/');
+        res.redirect('');
       });
     });
   })
