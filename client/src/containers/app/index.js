@@ -4,7 +4,7 @@ import KanbanTitle from '../../components/KanbanTitle.js';
 import KanbanDummyList from '../../components/KanbanDummyList.js';
 import './styles.css';
 import { connect } from 'react-redux'
-import ReduxThunk from 'redux-thunk';
+//import ReduxThunk from 'redux-thunk';
 
 // a react component
 class App extends Component {
