@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './styles.css';
 
-class App extends Component {
+export default class App extends Component {
   render() {
+    console.log(this.props);
     return (
       <div className="App">
         <div className="App-header">
@@ -18,4 +19,27 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    books: state.books)
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addBook: book => {
+      dispatch(addBook())
+    }
+    onTodoClick: (id) => {
+      dispatch(toggleTodo(id))
+    }
+  }
+}
+
+// need to use connect if you want to connect to Redux store
+const ConnectedApp = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TodoList)
+
+export default VisibleTodoList

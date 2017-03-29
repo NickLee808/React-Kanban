@@ -4,7 +4,7 @@ const initialState = {
   cards: []
 };
 
-export default function cards(state = initialState, action) {
+export default function cards(state = initialState, action){
   switch(action.type) {
     case ADD_CARD:
       return Object.assign({}, state, {

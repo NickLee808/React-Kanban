@@ -3,7 +3,10 @@ import React, { Component } from 'react';
 import KanbanTitle from '../../components/KanbanTitle.js';
 import KanbanDummyList from '../../components/KanbanDummyList.js';
 import './styles.css';
+import { connect } from 'react-redux'
+import ReduxThunk from 'redux-thunk';
 
+// a react component
 class App extends Component {
   constructor(){
     super();
@@ -26,13 +29,30 @@ class App extends Component {
     return (
       <div className="App">
         <KanbanTitle
-          title={this.title}
-        />
-        <KanbanDummyList
-        list={ this.state.cards }/>
+          title={this.title}>
+        </KanbanTitle>
+          <KanbanDummyList list={ this.state.cards }>
+        </KanbanDummyList>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    cards: state.cards
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onAddCard: (title, priority, status, createdBy, assignedTo) => {
+      /*dispatch(addCard(title, priority, status, createdBy, assignedTo));*/
+    }
+  }
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

@@ -1,12 +1,14 @@
 export const ADD_CARD = 'ADD_CARD';
 
-export function addCard(title, author){
-  return {
-    type: ADD_CARD,
-    title,
-    priority,
-    status,
-    createdBy,
-    assignedTo
-  };
+export function addCard(id, title, priority, status, createdBy, assignedTo){
+    return {
+        type: ADD_CARD,
+        id,
+        title,
+        priority,
+        status,
+        createdBy,
+        assignedTo
+    };
+
 }
