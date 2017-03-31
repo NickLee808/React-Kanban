@@ -10,5 +10,4 @@ export function addCard(id, title, priority, status, createdBy, assignedTo){
         createdBy,
         assignedTo
     };
-
 }

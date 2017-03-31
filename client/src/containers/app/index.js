@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import KanbanTitle from '../../components/KanbanTitle.js';
 import KanbanDummyList from '../../components/KanbanDummyList.js';
 import './styles.css';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 //import ReduxThunk from 'redux-thunk';
 
 // a react component
@@ -12,17 +12,19 @@ class App extends Component {
     super();
     var oReq = new XMLHttpRequest();
     let reqListener = () => {
-      this.setState({ cards: JSON.parse(oReq.responseText) })
-    }
+      console.log(oReq.response);
+      this.setState({ cards: JSON.parse(oReq.response)
+      });
+    };
     oReq.addEventListener('load', reqListener);
-    oReq.open('GET', 'http://localhost:9000/api/cards');
+    oReq.open('GET', '/api/cards');
     oReq.send();
     this.title = 'Kanban';
     this.state = { cards: [] };
   }
 
   doClick = () => {
-    console.log( this.title );
+    console.log( this.title);
   }
 
   render() {
