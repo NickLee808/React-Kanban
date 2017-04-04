@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 //import ReactDOM from 'react-dom';
 import KanbanTitle from '../../components/KanbanTitle.js';
-import KanbanDummyList from '../../components/KanbanDummyList.js';
+import Scrum from '../../components/Scrum.js';
 import './styles.css';
 import { connect } from 'react-redux';
 //import ReduxThunk from 'redux-thunk';
@@ -13,7 +13,23 @@ class App extends Component {
     var oReq = new XMLHttpRequest();
     let reqListener = () => {
       console.log(oReq.response);
-      this.setState({ cards: JSON.parse(oReq.response)
+      let parse = JSON.parse(oReq.response);
+      let queueDiv = {name:"QUEUE", cards: []};
+      let progressDiv = {name:"PROGRESS", cards: []};
+      let finishedDiv = {name:"FINISHED", cards: []};
+
+      for (let i=0; i < parse.length; ++i) {
+        if(parse[i].status === "QUEUE"){
+          queueDiv.cards.push(parse[i]);
+        }else if(parse[i].status === "PROGRESS"){
+          progressDiv.cards.push(parse[i]);
+        }else if(parse[i].status === "FINISHED"){
+          finishedDiv.cards.push(parse[i]);
+        }
+      }
+      console.log(queueDiv);
+
+      this.setState({ cards: [queueDiv, progressDiv, finishedDiv]
       });
     };
     oReq.addEventListener('load', reqListener);
@@ -23,18 +39,13 @@ class App extends Component {
     this.state = { cards: [] };
   }
 
-  doClick = () => {
-    console.log( this.title);
-  }
-
   render() {
     return (
       <div className="App">
         <KanbanTitle
           title={this.title}>
         </KanbanTitle>
-          <KanbanDummyList list={ this.state.cards }>
-        </KanbanDummyList>
+        <Scrum list={ this.state.cards } />
       </div>
     );
   }
