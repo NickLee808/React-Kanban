@@ -9,7 +9,7 @@ const cardRoute = require('./routes/card');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.use('/api/cards/', cardRoute);
+app.use('/api/cards', cardRoute);
 
 // Fixes 'Access-Control-Allow-Origin' error
 app.use((req, res, next) => {

@@ -6,7 +6,7 @@ import './styles.css';
 import { connect } from 'react-redux';
 //import ReduxThunk from 'redux-thunk';
 
-// a react component
+//a react component
 class App extends Component {
   constructor(){
     super();

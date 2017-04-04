@@ -1,3 +1,4 @@
+/*
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
@@ -45,3 +46,4 @@ const ConnectedApp = connect(
 )(TodoList)
 
 export default VisibleTodoList
+*/
