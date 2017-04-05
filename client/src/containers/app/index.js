@@ -14,22 +14,22 @@ class App extends Component {
     let reqListener = () => {
       console.log(oReq.response);
       let parse = JSON.parse(oReq.response);
-      let queueDiv = {name:"QUEUE", cards: []};
-      let progressDiv = {name:"PROGRESS", cards: []};
-      let finishedDiv = {name:"FINISHED", cards: []};
+      let queueDiv = {name:"IN QUEUE", cards: []};
+      let progressDiv = {name:"IN PROGRESS", cards: []};
+      let doneDiv = {name:"DONE", cards: []};
 
       for (let i=0; i < parse.length; ++i) {
         if(parse[i].status === "QUEUE"){
           queueDiv.cards.push(parse[i]);
         }else if(parse[i].status === "PROGRESS"){
           progressDiv.cards.push(parse[i]);
-        }else if(parse[i].status === "FINISHED"){
-          finishedDiv.cards.push(parse[i]);
+        }else if(parse[i].status === "DONE"){
+          doneDiv.cards.push(parse[i]);
         }
       }
       console.log(queueDiv);
 
-      this.setState({ cards: [queueDiv, progressDiv, finishedDiv]
+      this.setState({ cards: [queueDiv, progressDiv, doneDiv]
       });
     };
     oReq.addEventListener('load', reqListener);
