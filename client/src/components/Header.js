@@ -4,8 +4,7 @@ const Header = (props) => (
   <div className='App-header'>
     <h2>{ props.title }</h2>
     <form action="/action_page.php">
-      Name:
-      <input type="text" name ="name"></input>
+      <input type="text" placeholder="Name" name ="name"></input>
       Priority:
       <select name="priority">
         <option value="low">Low</option>

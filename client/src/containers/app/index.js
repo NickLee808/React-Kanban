@@ -4,6 +4,7 @@ import Header from '../../components/Header.js';
 import Scrum from '../../components/Scrum.js';
 import './styles.css';
 import { connect } from 'react-redux';
+import { addCard } from '../actions'
 //import ReduxThunk from 'redux-thunk';
 
 //a react component
@@ -12,7 +13,8 @@ class App extends Component {
     super();
     this.title = 'this title thing';
     this.state = {
-      cards: []
+      cards: [],
+      value: ''
     };
 
     var oReq = new XMLHttpRequest();
