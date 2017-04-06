@@ -12,7 +12,6 @@ class App extends Component {
     super();
     var oReq = new XMLHttpRequest();
     let reqListener = () => {
-      console.log(oReq.response);
       let parse = JSON.parse(oReq.response);
       let queueDiv = {name:"IN QUEUE", cards: []};
       let progressDiv = {name:"IN PROGRESS", cards: []};
@@ -27,24 +26,25 @@ class App extends Component {
           doneDiv.cards.push(parse[i]);
         }
       }
-      console.log(queueDiv);
 
-      this.setState({ cards: [queueDiv, progressDiv, doneDiv]
+      this.setState({
+        cards: [queueDiv, progressDiv, doneDiv]
       });
     };
+
     oReq.addEventListener('load', reqListener);
     oReq.open('GET', '/api/cards');
     oReq.send();
     this.title = 'Kanban';
-    this.state = { cards: [] };
+    this.state = {
+      cards: []
+    };
   }
 
   render() {
     return (
       <div className="App">
-        <KanbanTitle
-          title={this.title}>
-        </KanbanTitle>
+        <KanbanTitle title={this.title} />
         <Scrum list={ this.state.cards } />
       </div>
     );

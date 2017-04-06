@@ -11,13 +11,13 @@ const Scrum = (props) => (
               {
                 column.cards.map((card) => {
                   return (
-                    <li key={card.id}>
+                    <div key={card.id}>
                       <p>Name: {card.title}</p>
                       <p>Priority: {card.priority}</p>
                       <p>Status: {card.status}</p>
                       <p>{card.createdBy}</p>
                       <p>{card.assignedTo}</p>
-                    </li>
+                    </div>
                   );
                 })
               }
