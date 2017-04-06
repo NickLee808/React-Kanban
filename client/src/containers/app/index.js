@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 //import ReactDOM from 'react-dom';
-import KanbanTitle from '../../components/KanbanTitle.js';
+import Header from '../../components/Header.js';
 import Scrum from '../../components/Scrum.js';
 import './styles.css';
 import { connect } from 'react-redux';
@@ -10,7 +10,13 @@ import { connect } from 'react-redux';
 class App extends Component {
   constructor(){
     super();
+    this.title = 'this title thing';
+    this.state = {
+      cards: []
+    };
+
     var oReq = new XMLHttpRequest();
+
     let reqListener = () => {
       let parse = JSON.parse(oReq.response);
       let queueDiv = {name:"IN QUEUE", cards: []};
@@ -35,16 +41,12 @@ class App extends Component {
     oReq.addEventListener('load', reqListener);
     oReq.open('GET', '/api/cards');
     oReq.send();
-    this.title = 'Kanban';
-    this.state = {
-      cards: []
-    };
   }
 
   render() {
     return (
       <div className="App">
-        <KanbanTitle title={this.title} />
+        <Header title={this.title} />
         <Scrum list={ this.state.cards } />
       </div>
     );
@@ -60,7 +62,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onAddCard: (title, priority, status, createdBy, assignedTo) => {
-      /*dispatch(addCard(title, priority, status, createdBy, assignedTo));*/
     }
   }
 };

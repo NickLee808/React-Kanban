@@ -5,7 +5,7 @@ const Scrum = (props) => (
     {
       props.list.map((column) => { 
         return (
-          <div>
+          <div key={column.name}>
             <h1>{column.name}</h1>
             <ul>
               {
